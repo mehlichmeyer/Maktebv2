@@ -18,7 +18,22 @@ class CreateAlumniTable extends Migration
             $table->timestamps();
             $table->string('surname');
             $table->string('name');
-            $table->string('status');
+            $table->date('birthdate');
+			$table->string('handicapnumber');
+			$table->string('insurancenumber');
+			$table->string('socialsecuritycoverage');
+			$table->string('handicaptype');
+			$table->string('handicapdegree');
+			$table->date('handicapcardenddate');
+			$table->date('insurancecardenddate');
+			$table->string('telephonenumber');
+			$table->string('identitycardnumber');
+			$table->string('mothersname');
+			$table->string('fathersname');
+			$table->date('entrydate');
+			$table->date('exitdate');
+			$table->string('comment');
+
         });
     }
 

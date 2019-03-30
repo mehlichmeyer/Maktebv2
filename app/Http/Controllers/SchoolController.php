@@ -13,7 +13,7 @@ class SchoolController extends Controller
 
 		$allAlumni = alumni::all();
 
-		return view('index')->with('alumni', $allAlumni);
+		return view('listall')->with('alumni', $allAlumni);
 
 	}
 
@@ -23,13 +23,19 @@ class SchoolController extends Controller
 
 		$newStudent = new alumni();
 
-		$newStudent->surname = $request->surname;
-		$newStudent->name = $request->name;
-		$newStudent->status = $request->status;
+
+		foreach ($request->all() as $key => $singleRequest) {
+
+			if($key === '_token' || $singleRequest == null){
+				continue;
+			}
+
+			$newStudent->$key = $singleRequest;
+		}
 
 		$newStudent->save();
 
-		header("Location: /");
+		header("Location: /listall");
 		die();
 	}
 
@@ -40,11 +46,25 @@ class SchoolController extends Controller
 			->update([
 				'surname' => $request->surname,
 				'name' => $request->name,
-				'status' => $request->status,
+				'birthdate' => $request->birthdate,
+				'handicapnumber' => $request->handicapnumber,
+				'insurancenumber' => $request->insurancenumber,
+				'socialsecuritycoverage' => $request->socialsecuritycoverage,
+				'handicaptype' => $request->handicaptype,
+				'handicapdegree' => $request->handicapdegree,
+				'handicapcardenddate' => $request->handicapcardenddate,
+				'insurancecardenddate' => $request->insurancecardenddate,
+				'telephonenumber' => $request->telephonenumber,
+				'identitycardnumber' => $request->identitycardnumber,
+				'mothersname' => $request->mothersname,
+				'fathersname' => $request->fathersname,
+				'entrydate' => $request->entrydate,
+				'exitdate' => $request->exitdate,
+				'comment' => $request->comment
 			]);
 
 
-		header("Location: /");
+		header("Location: /listall");
 		die();
 	}
 
@@ -53,7 +73,7 @@ class SchoolController extends Controller
 
 		alumni::where('id', $id)->delete();
 
-		header("Location: /");
+		header("Location: /listall");
 		die();
 	}
 

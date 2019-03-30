@@ -22,7 +22,21 @@ class alumni extends Model
 	protected $fillable = [
 		'surname',
 		'name',
-		'status'
+		'birthdate',
+		'handicapnumber',
+		'insurancenumber',
+		'socialsecuritycoverage',
+		'handicaptype',
+		'handicapdegree',
+		'handicapcardenddate',
+		'insurancecardenddate',
+		'telephonenumber',
+		'identitycardnumber',
+		'mothersname',
+		'fathersname',
+		'entrydate',
+		'exitdate',
+		'comment'
 	];
 
 }
